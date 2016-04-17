@@ -15,6 +15,8 @@ function getWinners(vote) {
 	}
 }
 
+export const INITIAL_STATE = Map();
+
 export function next(state) {
 	const entries = state.get('entries')
 											 .concat(getWinners(state.get('vote')));
@@ -35,9 +37,9 @@ export function setEntries(state, entries) {
 	return state.set('entries', List(entries));
 }
 
-export function vote(state, entry) {
-	return state.updateIn(
-		['vote', 'tally', entry],
+export function vote(voteState, entry) {
+	return voteState.updateIn(
+		['tally', entry],
 		0,
 		(tally) => tally + 1
 	);
