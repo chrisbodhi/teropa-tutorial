@@ -15,6 +15,8 @@ function getWinners(vote) {
 	}
 }
 
+export const INITIAL_STATE = Map();
+
 export function next(state) {
 	const entries = state.get('entries')
 											 .concat(getWinners(state.get('vote')));
